@@ -12,6 +12,10 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - print_pipeline_id
+      - run:
+         name: on error
+         command: echo "Hello Error!"
+         when: on_fail
 
 jobs:
   save_hello_world_output:
@@ -27,7 +31,10 @@ jobs:
           root: ~/
           paths:
             - output.txt
-            
+       - run:
+          name: on error
+          command: echo "Hello Error2!"
+          when: on_fail   
  
   
 # Invoke jobs via workflows
